@@ -2,10 +2,10 @@ name: 🚀 CI Básico
 
 # Quando executar este workflow
 on:
-  push:
-    branches: [ main ]
-  pull_request:
-    branches: [ main ]
+  #push:
+  #  branches: [ main ]
+  #pull_request:
+  #  branches: [ main ]
   workflow_dispatch:  # Permite execução manual
 
 jobs:

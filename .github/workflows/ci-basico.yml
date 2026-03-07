@@ -1,0 +1,42 @@
+name: 🚀 CI Básico
+
+# Quando executar este workflow
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+  workflow_dispatch:  # Permite execução manual
+
+jobs:
+  build-and-test:
+    name: 🏗️ Build and Test
+    runs-on: ubuntu-latest
+    
+    steps:
+      # Passo 1: Fazer checkout do código
+      - name: 📥 Checkout código
+        uses: actions/checkout@v4
+      
+      # Passo 2: Configurar Node.js
+      - name: 🔧 Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+          cache: 'npm'
+          cache-dependency-path: app/package-lock.json
+      
+      # Passo 3: Instalar dependências
+      - name: 📦 Instalar dependências
+        working-directory: app
+        run: npm ci
+      
+      # Passo 4: Executar testes
+      - name: 🧪 Executar testes
+        working-directory: app
+        run: npm test
+      
+      # Passo 5: Executar lint (análise de código)
+      - name: 🔍 Lint
+        working-directory: app
+        run: npm run lint --if-present

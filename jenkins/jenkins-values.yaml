@@ -1,9 +1,9 @@
 controller:
   admin:
     username: "admin"
-    password: "fiap123456"
+    password: "ReDe1313"
   
-  serviceType: LoadBalancer
+  serviceType: ClusterIP
   
   installPlugins:
     - kubernetes:latest
@@ -22,21 +22,21 @@ controller:
         
   resources:
     requests:
-      cpu: "500m"
-      memory: "1Gi"
+      cpu: "200m"
+      memory: "256Mi"
     limits:
-      cpu: "1000m"
-      memory: "2Gi"
+      cpu: "500m"
+      memory: "768Mi"
 
 agent:
   enabled: true
   resources:
     requests:
       cpu: "200m"
-      memory: "512Mi"
+      memory: "256Mi"
     limits:
       cpu: "500m"
-      memory: "1Gi"
+      memory: "768Mi"
 
 persistence:
   enabled: false
